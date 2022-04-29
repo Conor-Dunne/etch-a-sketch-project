@@ -1,12 +1,11 @@
 const pad = document.querySelector(".sketchpad");
-const rows = document.querySelector(".row");
 
 
-let gridNum = 80;
+let gridNum = 60;
 
 
 
-let addRows = function () {
+let addSquares = function () {
     const row = document.createElement("div");
     row.classList.add("row");
     pad.appendChild(row)
@@ -30,16 +29,16 @@ let addRows = function () {
 
 
 
-let rowFill = function (num) {
+let padFill = function (num) {
     for (let i = 0; i < num; i++) {
-        addRows();
+        addSquares();
     }
 }
 
 
 
 
-rowFill(gridNum);
+padFill(gridNum);
 
 
 
