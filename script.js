@@ -11,7 +11,7 @@ const emptyGrid = function removeAllChildNodes(pad) {
 
 changeGridSizeBtn.addEventListener("click", function () {
     let userNum = window.prompt("Please type desired squares per side (MAX: 100)", "80");
-    if (userNum == null || userNum <= 0 || userNum > 80) {
+    if (userNum == null || userNum <= 0 || userNum > 80 || typeof userNum != "number") {
         alert("Please type a number between 1 and 80")
         return;
     } else {
