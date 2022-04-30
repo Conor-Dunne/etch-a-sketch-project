@@ -11,16 +11,14 @@ const emptyGrid = function removeAllChildNodes(pad) {
 
 changeGridSizeBtn.addEventListener("click", function () {
     let userNum = window.prompt("Please type desired squares per side (MAX: 100)", "80");
-    if (userNum == null || userNum <= 0 || userNum > 80 || typeof userNum != "number") {
+    if (userNum == null || userNum <= 0 || userNum > 80 || !Number.isNaN(userNum)) {
         alert("Please type a number between 1 and 80")
         return;
     } else {
-
         gridNum = userNum;
         emptyGrid(pad);
         padFill(gridNum);
         gridSizeBox.textContent = `Current grid size: ${gridNum} x ${gridNum}`;
-
     }
 
 });
