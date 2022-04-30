@@ -1,9 +1,29 @@
+let gridNum = 80;
 const pad = document.querySelector(".sketchpad");
+const gridSizeBox = document.querySelector(".gridSize");
+const changeGridSizeBtn = document.querySelector("#gridBtn");
+gridSizeBox.textContent = `Current grid size: ${gridNum} x ${gridNum}`;
+const emptyGrid = function removeAllChildNodes(pad) {
+    while (pad.firstChild) {
+        pad.removeChild(pad.firstChild);
+    }
+}
 
+changeGridSizeBtn.addEventListener("click", function () {
+    let userNum = window.prompt("Please type desired squares per side (MAX: 100)", "80");
+    if (userNum == null || userNum <= 0 || userNum > 80) {
+        alert("Please type a number between 1 and 80")
+        return;
+    } else {
 
-let gridNum = 60;
+        gridNum = userNum;
+        emptyGrid(pad);
+        padFill(gridNum);
+        gridSizeBox.textContent = `Current grid size: ${gridNum} x ${gridNum}`;
 
+    }
 
+});
 
 let addSquares = function () {
     const row = document.createElement("div");
@@ -17,13 +37,15 @@ let addSquares = function () {
     }
 
     const squares = Array.from(document.querySelectorAll('.column'));
-    console.log(squares);
 
-    squares.forEach(square => square.addEventListener("mouseenter", function(event) {
+
+    squares.forEach(square => square.addEventListener("mouseenter", function (event) {
         event.target.style.backgroundColor = "purple"
     }))
 
 }
+
+
 
 
 
