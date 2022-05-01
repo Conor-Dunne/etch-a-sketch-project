@@ -3,6 +3,10 @@ const pad = document.querySelector(".sketchpad");
 const gridSizeBox = document.querySelector(".gridSize");
 const changeGridSizeBtn = document.querySelector("#gridBtn");
 gridSizeBox.textContent = `Current grid size: ${gridNum} x ${gridNum}`;
+const clearBtn = document.querySelector("#clearBtn")
+
+
+
 const emptyGrid = function removeAllChildNodes(pad) {
     while (pad.firstChild) {
         pad.removeChild(pad.firstChild);
@@ -23,20 +27,29 @@ changeGridSizeBtn.addEventListener("click", function () {
 
 });
 
+
+const clearPad = function () {
+    const cleanSquare = Array.from(document.querySelectorAll('.column'));
+    
+    console.log(cleanSquare);
+    cleanSquare.forEach(square => square.style.backgroundColor = "rgb(180, 204, 204)");
+}
+
+
+clearBtn.addEventListener("click", function(){
+    clearPad();
+})
+
 let addSquares = function () {
     const row = document.createElement("div");
     row.classList.add("row");
     pad.appendChild(row)
-
     for (let i = 0; i < gridNum; i++) {
         const column = document.createElement("div");
         column.classList.add("column");
         row.appendChild(column);
     }
-
     const squares = Array.from(document.querySelectorAll('.column'));
-
-
     squares.forEach(square => square.addEventListener("mouseenter", function (event) {
         event.target.style.backgroundColor = "purple"
     }))
@@ -44,19 +57,11 @@ let addSquares = function () {
 }
 
 
-
-
-
-
-
 let padFill = function (num) {
     for (let i = 0; i < num; i++) {
         addSquares();
     }
 }
-
-
-
 
 padFill(gridNum);
 
